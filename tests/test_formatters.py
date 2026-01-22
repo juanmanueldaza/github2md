@@ -1,9 +1,8 @@
 """Tests for formatters."""
 
-import pytest
+from github2md.formatters.contributions import ContributionsFormatter
 from github2md.formatters.profile import ProfileFormatter
 from github2md.formatters.repos import ReposFormatter
-from github2md.formatters.contributions import ContributionsFormatter
 
 
 class TestProfileFormatter:

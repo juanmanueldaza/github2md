@@ -18,6 +18,7 @@ class GitHubExtractor(DataExtractor):
         env = None
         if self._token:
             import os
+
             env = os.environ.copy()
             env["GH_TOKEN"] = self._token
 
@@ -55,8 +56,7 @@ class GitHubExtractor(DataExtractor):
         """Get user repositories."""
         try:
             result = self._run_gh(
-                "api", f"/users/{username}/repos",
-                "-f", "per_page=100"
+                "api", f"/users/{username}/repos", "-f", "per_page=100"
             )
             return result if isinstance(result, list) else []
         except Exception:
@@ -81,9 +81,7 @@ class GitHubExtractor(DataExtractor):
         """
         try:
             result = self._run_gh(
-                "api", "graphql",
-                "-f", f"query={query}",
-                "-f", f"login={username}"
+                "api", "graphql", "-f", f"query={query}", "-f", f"login={username}"
             )
             user = result.get("data", {}).get("user", {})
             return user.get("contributionsCollection", {})

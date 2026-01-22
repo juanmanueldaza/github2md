@@ -1,9 +1,8 @@
 """Tests for parsers."""
 
-import pytest
+from github2md.parsers.contributions import ContributionsParser
 from github2md.parsers.profile import ProfileParser
 from github2md.parsers.repos import ReposParser
-from github2md.parsers.contributions import ContributionsParser
 
 
 class TestProfileParser:
@@ -14,12 +13,14 @@ class TestProfileParser:
     def test_parse_profile(self):
         parser = ProfileParser()
         raw_data = {
-            "profile": [{
-                "login": "testuser",
-                "name": "Test User",
-                "bio": "A developer",
-                "public_repos": 10,
-            }]
+            "profile": [
+                {
+                    "login": "testuser",
+                    "name": "Test User",
+                    "bio": "A developer",
+                    "public_repos": 10,
+                }
+            ]
         }
         result = parser.parse(raw_data)
         assert result["username"] == "testuser"

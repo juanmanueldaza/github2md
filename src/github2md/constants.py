@@ -23,12 +23,12 @@ ALLOWED_URL_SCHEMES = {"http", "https", "mailto"}
 # PR state icons
 PR_STATE_ICONS = {
     "MERGED": "\u2705",
-    "OPEN": "\U0001F504",
-    "CLOSED": "\u274C",
+    "OPEN": "\U0001f504",
+    "CLOSED": "\u274c",
 }
 
 # Issue state icons
 ISSUE_STATE_ICONS = {
-    "OPEN": "\U0001F7E2",
-    "CLOSED": "\U0001F7E3",
+    "OPEN": "\U0001f7e2",
+    "CLOSED": "\U0001f7e3",
 }
