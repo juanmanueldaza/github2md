@@ -65,8 +65,8 @@ class GitHubExtractor(DataExtractor):
     def _get_contributions(self, username: str) -> dict[str, Any]:
         """Get contribution data via GraphQL."""
         query = """
-        query($login: String!) {
-          user(login: $login) {
+        query($username: String!) {
+          user(login: $username) {
             contributionsCollection {
               totalCommitContributions
               totalIssueContributions
@@ -81,7 +81,7 @@ class GitHubExtractor(DataExtractor):
         """
         try:
             result = self._run_gh(
-                "api", "graphql", "-f", f"query={query}", "-f", f"login={username}"
+                "api", "graphql", "-f", f"query={query}", "-f", f"username={username}"
             )
             user = result.get("data", {}).get("user", {})
             return user.get("contributionsCollection", {})
