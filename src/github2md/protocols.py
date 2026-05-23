@@ -11,18 +11,18 @@ from typing import Any, Protocol, runtime_checkable
 
 @runtime_checkable
 class DataExtractor(Protocol):
-    """Protocol for extracting raw data from GitLab API.
+    """Protocol for extracting raw data from GitHub API.
 
     Implementations:
-    - GitLabExtractor: Real extraction via glab CLI
-    - DictExtractor: Mock for testing
+    - GitHubExtractor: Real extraction via gh CLI
+    - DictExtractor: Mock for testing (in tests/conftest.py)
     """
 
     def extract(self, username: str) -> dict[str, Any]:
-        """Extract all data for a GitLab user.
+        """Extract all data for a GitHub user.
 
         Args:
-            username: GitLab username to extract data for.
+            username: GitHub username to extract data for.
 
         Returns:
             Dictionary with all extracted data sections.
@@ -93,7 +93,7 @@ class OutputWriter(Protocol):
 
     Implementations:
     - MarkdownFileWriter: Write to filesystem with security validation
-    - InMemoryWriter: Write to memory for testing
+    - InMemoryWriter: Write to memory for testing (in tests/conftest.py)
     """
 
     def write(self, filename: str, content: str) -> Path:

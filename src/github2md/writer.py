@@ -65,22 +65,3 @@ class MarkdownFileWriter(OutputWriter):
         filepath = self._output_dir / filename
         filepath.write_text(content, encoding="utf-8")
         return filepath
-
-
-class InMemoryWriter(OutputWriter):
-    """In-memory writer for testing.
-
-    Single Responsibility: Store output in memory.
-    """
-
-    def __init__(self) -> None:
-        self.files: dict[str, str] = {}
-
-    def write(self, filename: str, content: str) -> Path:
-        """Store content in memory."""
-        # Add .md extension if not present
-        if not filename.endswith(".md"):
-            filename = f"{filename}.md"
-
-        self.files[filename] = content
-        return Path(filename)

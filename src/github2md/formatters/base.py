@@ -2,22 +2,11 @@
 
 import urllib.parse
 
-from ..constants import (
-    ALLOWED_URL_SCHEMES,
-    DEFAULT_TRUNCATE_LENGTH,
-    ISSUE_STATE_ICONS,
-    PR_STATE_ICONS,
-)
+from ..constants import ALLOWED_URL_SCHEMES, DEFAULT_TRUNCATE_LENGTH
 
 
 class BaseFormatter:
     """Base class with utility methods for formatters."""
-
-    def _escape_md(self, text: str | None) -> str:
-        """Escape markdown special characters."""
-        if not text:
-            return ""
-        return text.replace("|", "\\|").replace("\n", " ").replace("\r", "")
 
     def _sanitize_url(self, url: str | None) -> str:
         """Sanitize URL for safe inclusion in Markdown."""
@@ -52,18 +41,3 @@ class BaseFormatter:
         if len(text) <= max_len:
             return text
         return text[: max_len - 3] + "..."
-
-    def _get_pr_state_icon(self, state: str) -> str:
-        """Get icon for PR state."""
-        return PR_STATE_ICONS.get(state, "?")
-
-    def _get_issue_state_icon(self, state: str) -> str:
-        """Get icon for issue state."""
-        return ISSUE_STATE_ICONS.get(state, "?")
-
-    def _format_more(self, shown: int, total: int, item_type: str) -> str:
-        """Format 'and X more' message."""
-        remaining = total - shown
-        if remaining <= 0:
-            return ""
-        return f"\n*...and {remaining} more {item_type}*\n"

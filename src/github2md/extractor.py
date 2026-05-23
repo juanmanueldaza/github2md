@@ -87,13 +87,3 @@ class GitHubExtractor(DataExtractor):
             return user.get("contributionsCollection", {})
         except Exception:
             return {}
-
-
-class DictExtractor(DataExtractor):
-    """Extract data from a pre-populated dictionary (for testing)."""
-
-    def __init__(self, data: dict[str, Any]):
-        self._data = data
-
-    def extract(self, username: str) -> dict[str, Any]:
-        return {**self._data, "username": username}
