@@ -1,6 +1,7 @@
 """Command-line interface for github2md."""
 
 import argparse
+import logging
 import subprocess
 import sys
 from pathlib import Path
@@ -49,34 +50,35 @@ def main():
     )
 
     args = parser.parse_args()
+    logging.basicConfig(
+        format="%(message)s",
+        level=logging.INFO,
+    )
 
     username = args.username
     if not username:
         username = get_authenticated_user()
         if not username:
-            print(
-                "Error: No username provided and not authenticated.",
-                file=sys.stderr,
-            )
-            print("Run 'gh auth login' first.", file=sys.stderr)
+            logging.error("No username provided and not authenticated.")
+            logging.error("Run 'gh auth login' first.")
             sys.exit(1)
-        print(f"Using authenticated user: {username}")
+        logging.info("Using authenticated user: %s", username)
 
     try:
         subprocess.run(["gh", "--version"], capture_output=True, check=True)
     except FileNotFoundError:
-        print("Error: gh CLI not found.", file=sys.stderr)
+        logging.error("gh CLI not found.")
         sys.exit(1)
 
     try:
         converter = create_converter(args.output)
-        print(f"Fetching GitHub data for: {username}")
+        logging.info("Fetching GitHub data for: %s", username)
         files = converter.convert(username)
-        print(f"\nCreated {len(files)} files in {args.output}/")
+        logging.info("Created %d files in %s/", len(files), args.output)
         for f in files:
-            print(f"  - {f.name}")
+            logging.info("  - %s", f.name)
     except (ValueError, RuntimeError) as e:
-        print(f"Error: {e}", file=sys.stderr)
+        logging.error(e)
         sys.exit(1)
 
 

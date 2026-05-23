@@ -1,6 +1,6 @@
 """Main orchestrator for GitHub to Markdown conversion."""
 
-import sys
+import logging
 from pathlib import Path
 from typing import Any
 
@@ -34,7 +34,7 @@ class GitHubToMarkdownConverter:
                 parsed[parser.section_key] = parser.parse(raw_data)
             except Exception as e:
                 key = parser.section_key
-                print(f"Warning: Parser '{key}' failed: {e}", file=sys.stderr)
+                logging.warning("Parser '%s' failed: %s", key, e)
                 parsed[parser.section_key] = None
         return parsed
 
@@ -52,7 +52,7 @@ class GitHubToMarkdownConverter:
                     created_files.append(path)
             except Exception as e:
                 key = formatter.section_key
-                print(f"Warning: Formatter '{key}' failed: {e}", file=sys.stderr)
+                logging.warning("Formatter '%s' failed: %s", key, e)
         return created_files
 
 
