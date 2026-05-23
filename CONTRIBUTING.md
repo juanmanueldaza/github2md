@@ -1,13 +1,13 @@
-# Contributing to gitlab2md
+# Contributing to github2md
 
-Thank you for your interest in contributing to gitlab2md! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to github2md! This document provides guidelines and instructions for contributing.
 
 ## Development Setup
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/juanmanueldaza/gitlab2md.git
-   cd gitlab2md
+   git clone https://github.com/juanmanueldaza/github2md.git
+   cd github2md
    ```
 
 2. **Create a virtual environment**
@@ -49,15 +49,15 @@ The project follows SOLID principles:
 
 ### Adding a New Parser
 
-1. Create a file in `src/gitlab2md/parsers/`
+1. Create a file in `src/github2md/parsers/`
 2. Implement the `SectionParser` protocol
 3. Use `@register_parser` decorator
-4. Create matching formatter in `src/gitlab2md/formatters/`
+4. Create matching formatter in `src/github2md/formatters/`
 
 Example:
 ```python
-from gitlab2md.parsers.base import BaseParser
-from gitlab2md.registry import register_parser
+from github2md.parsers.base import BaseParser
+from github2md.registry import register_parser
 
 @register_parser
 class MyNewParser(BaseParser):
@@ -88,7 +88,7 @@ class MyNewParser(BaseParser):
 When reporting bugs, please include:
 - Python version
 - Operating system
-- `glab` CLI version
+- `gh` CLI version
 - Steps to reproduce
 - Expected vs actual behavior
 
