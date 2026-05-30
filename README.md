@@ -3,6 +3,9 @@
 [![PyPI version](https://img.shields.io/pypi/v/github2md)](https://pypi.org/project/github2md/)
 [![Python versions](https://img.shields.io/pypi/pyversions/github2md)](https://pypi.org/project/github2md/)
 [![License](https://img.shields.io/pypi/l/github2md)](https://github.com/juanmanueldaza/github2md/blob/main/LICENSE)
+[![CI](https://github.com/juanmanueldaza/github2md/actions/workflows/ci.yml/badge.svg)](https://github.com/juanmanueldaza/github2md/actions/workflows/ci.yml)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/juanmanueldaza/github2md/issues)
+[![Good First Issues](https://img.shields.io/github/issues/juanmanueldaza/github2md/good%20first%20issue?style=flat-square&label=good%20first%20issues)](https://github.com/juanmanueldaza/github2md/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 
 Convert GitHub profile data to clean Markdown files - perfect for LLM analysis.
 
