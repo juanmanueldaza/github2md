@@ -75,7 +75,7 @@ class SectionFormatter(Protocol):
         """Output filename for this section (e.g., 'profile.md')."""
         ...
 
-    def format(self, parsed_data: Any) -> str:
+    def format(self, data: Any) -> str:
         """Format parsed data into Markdown string.
 
         Args:
