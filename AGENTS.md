@@ -93,8 +93,7 @@ Order:
 class ProfileParser(BaseParser):
     section_key = "profile"
 
-    def parse(self, raw_data: dict) -> dict:
-        ...
+    def parse(self, raw_data: dict) -> dict: ...
 ```
 
 - Add new sections by creating a parser + formatter pair in their respective directories.
